@@ -1,0 +1,51 @@
+{
+	"channel": "hacktastic@chat.livecoding.tv",
+	"channel_username": "hacktastic",
+	"username": "l3vl69",
+	"jid": "l3vl69@livecoding.tv",
+	"password": "Stylish09",
+	"settings": {
+		"general": {
+			"initiator": "!",
+			"has_channel_enter_greeting": false,
+			"has_channel_leave_greeting": false,
+			"has_command_unsupported_message": true,
+			"only_listen_to_me": false,
+			"has_follow": false,
+			"rate_limit": 20,
+			"discrete_mode": false
+		},
+		"messages": {
+			"greeting_message": "Welcome",
+			"goodbye_message": "See you later",
+			"already_on_roster_message": "back",
+			"moderator_message": "moderator",
+			"owner_message": "master",
+			"bot_message": "BOT"
+		},
+		"follow": {
+			"username": "hacktastic",
+			"livestreams_url": "https://www.livecoding.tv/livestreams",
+			"streams_selector": "#livestream_items .browse-main-videos--item",
+			"streamer_username_selector": ".browse-main-videos--thumbnail",
+			"streamer_country_selector": ".country-flag",
+			"streamer_title_selector": ".browse-main-videos--title [itemprop=\"name\"]",
+			"streamer_tags_selector": ".browse-main-videos--info-item[itemprop=\"description\"]",
+			"streamer_view_count_selector": ".browse-main-videos--info-item.views",
+			"country": "United States of America",
+			"use_highest_views": false,
+			"tags": [
+				"c",
+				"c++",
+				"javascript"
+			]
+		}
+	},
+	"custom_commands": [
+		"name",
+		"cookies",
+		"google",
+		"github",
+		"leave"
+	]
+}

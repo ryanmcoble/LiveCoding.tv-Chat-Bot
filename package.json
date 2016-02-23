@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "colors": "^1.1.2",
+    "google": "^1.4.0",
+    "lctvbot": "0.0.4",
+    "node-xmpp-client": "^3.0.0",
+    "node-xmpp-core": "^5.0.1",
+    "request": "^2.69.0",
+    "sleep": "^3.0.1",
+    "tls-connect": "^0.2.2"
+  }
+}
