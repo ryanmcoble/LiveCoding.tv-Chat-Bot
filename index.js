@@ -11,7 +11,7 @@ var lctv_bot = new lctv_chat_bot(configs);
 
 
 
-/*var cheerio = require('cheerio'),
+var cheerio = require('cheerio'),
 	req = require('request'),
 	sleep = require('sleep');
 
@@ -83,6 +83,7 @@ function getLiveStreams(cb) {
 
 lctv_bot.on('ready', function() {
 
+	//sleep.sleep(10);
 
 	// get all live streams
 	getLiveStreams(function(channels) {
@@ -94,16 +95,17 @@ lctv_bot.on('ready', function() {
 		for(var i in channels) {
 
 
-			var chanIndex = Math.floor((Math.random() * (channels.length - 1)) + 0);
+			//var chanIndex = Math.floor((Math.random() * (channels.length - 1)) + 0);
+			var chanIndex = i;
 
 			var channel = channels[chanIndex];
 
 
-			console.log('channel selected: "' + channel.username + '"');
+			console.log('\n\n\n\nchannel selected: "' + channel.username + '"');
 
 			console.log(channel);
 
-			console.log('waiting 10 seconds to continue...');
+			console.log('waiting 10 seconds to join channel...');
 			sleep.sleep(10);
 
 
@@ -114,11 +116,11 @@ lctv_bot.on('ready', function() {
 			lctv_bot.joinChannel(channel.username);
 
 
-			console.log('waiting 10 seconds to get the full roster')
-			sleep.sleep(10); // wait 5 seconds, so we can be sure all clients are recognized
+			console.log('waiting 20 seconds to get the full roster')
+			sleep.sleep(20); // wait 5 seconds, so we can be sure all clients are recognized
 
 			
-			//console.log(lctv_bot);
+			console.log(lctv_bot.roster);
 
 
 			var userFound = false;
@@ -139,26 +141,24 @@ lctv_bot.on('ready', function() {
 			}
 
 
-			//if(userFound) break;
+			if(userFound) break;
 
-			//console.log('waiting 5 seconds to continue the search');
+			
+			console.log('waiting 5 seconds to continue the search');
 
-			//sleep.sleep(5);
-
+			sleep.sleep(5); // wait 5 seconds
 
 
 			// disconnect from channel
-			//lctv_bot.leaveChannel(channel.username);
+			lctv_bot.leaveChannel(channel.username);
 
-
-			//sleep.sleep(5); // wait 5 seconds
 
 		}
 
 
 	});
 
-});*/
+});
 
 
 

@@ -8,10 +8,10 @@ var ltx  = require('node-xmpp-core').ltx,
 function LCTVChatBot(configs) {
 
 	var self = this;
-	this.roster = {};
-	this.pastUsers = {};
-	this.commands = [];
-	this.roster = {};
+	self.roster = {};
+	self.pastUsers = {};
+	self.commands = [];
+	self.roster = {};
 
 
 	// attemp connection
@@ -31,10 +31,10 @@ function LCTVChatBot(configs) {
 		}).c('show').t('chat');
 		self.client.send(handshake);
 		console.log('presence changed to available');
-		self.emit('online');
+		//self.emit('online');
 
 		
-		self.joinChannel(configs.channel_username);
+		//self.joinChannel(configs.channel_username);
 
 
 		// // channel roster
@@ -103,6 +103,11 @@ function LCTVChatBot(configs) {
 	///  Extendible functionality  ///
 	//////////////////////////////////
 
+	// get roster
+	this.getRoster = function() {
+		return self.roster;
+	};
+
 	// join a channel
 	this.joinChannel = function(channel) {
 
@@ -113,6 +118,8 @@ function LCTVChatBot(configs) {
 		}).c('history', {seconds: 1});
 		self.client.send(channelJoin);
 		console.log('joined channel "' + channel + '"');
+
+		//this.roster = {};
 	};
 
 
@@ -127,6 +134,8 @@ function LCTVChatBot(configs) {
 		});
 		self.client.send(channelJoin);
 		console.log('left channel "' + channel + '"');
+
+		//this.roster = {};
 	};
 
 
