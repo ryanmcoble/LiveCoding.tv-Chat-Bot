@@ -8,6 +8,8 @@
     "node-xmpp-core": "^5.0.1",
     "request": "^2.69.0",
     "sleep": "^3.0.1",
-    "tls-connect": "^0.2.2"
+    "sleep-async": "^1.0.1",
+    "tls-connect": "^0.2.2",
+    "twitter": "^1.2.5"
   }
 }

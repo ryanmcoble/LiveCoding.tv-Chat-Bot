@@ -1,11 +1,40 @@
 module.exports = function(system, stanza, configs) {
 
 
-	var from = stanza.attrs.from;
-	var username = from.split('/')[1];
+	//var from = stanza.attrs.from;
+	//var username = from.split('/')[1];
 
 
-	var x = stanza.getChild('x');
+	/*if(stanza.attrs.id === 'roster_0') {
+
+		system.roster = {};
+
+		var items = stanza.getChild('query').children;
+
+		console.log(items.length);
+
+		for(var i = 0; i < items.length; i++) {
+
+			var item = items[i];
+
+			//console.log(item);
+
+
+			system.roster[item.attrs.jid] = {
+				jid: item.attrs.jid,
+				name: item.attrs.name,
+				isMod: false,
+				isOwner: false,
+				isBot: false
+			};
+
+		}
+
+		console.log('Channel roster response', system.roster);
+	}*/
+
+
+	/*var x = stanza.getChild('x');
 
 	if(!x) return system;
 
@@ -15,12 +44,7 @@ module.exports = function(system, stanza, configs) {
 
 	var isMod   = affiliation === 'admin' ? true : false;
 	var isOwner = affiliation === 'owner' ? true : false;
-	var isBot   = from.indexOf('bot') !== -1 ? true : false;
-
-	// don't accept presence responses from ourself
-	// if(from.indexOf(configs.username)) {
-	// 	return system;
-	// }
+	var isBot   = from.indexOf('bot') || from.indexOf(configs.username) > -1 ? true : false;
 
 
 	// user left channel
@@ -93,7 +117,7 @@ module.exports = function(system, stanza, configs) {
 
 		console.log(username + ': is now on my radar');
 
-	}
+	}*/
 
 	return system;
 

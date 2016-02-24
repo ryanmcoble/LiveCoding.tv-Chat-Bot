@@ -16,11 +16,11 @@ module.exports = function() {
 				var delay = parseInt(data.params) >= 5 ? parseInt(data.params) : 20;
 
 				setTimeout(function() {
-					sandbox.joinChannel(data.configs.channel);
+					sandbox.joinChannel(data.configs.channel_username);
 
 					var msg = 'I\'m back guys!';
 					sandbox.sendChannelMessage(msg + '\n\n\n');
-				}, (1000 + delay));
+				}, (1000 * delay));
 			}
 		};
 	}

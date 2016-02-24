@@ -34,18 +34,23 @@ function LCTVChatBot(configs) {
 		//self.emit('online');
 
 		
-		//self.joinChannel(configs.channel_username);
+		self.joinChannel(configs.channel_username);
 
 
-		// // channel roster
-		// var roster = new ltx.Element("iq", {
-		// 	to: configs.channel,
-		// 	id: 'roster_0',
-		// 	type: 'get'
-		// }).c("query", {
-		// 	xmlns: 'http://jabber.org/protocol/disco#items'
-		// });
-		// self.client.send(roster);
+		console.log('Set presence request:', handshake.toString());
+
+
+		// channel roster
+		var roster = new ltx.Element("iq", {
+			to: configs.channel_username + '@chat.livecoding.tv',
+			id: 'roster_0',
+			type: 'get'
+		}).c("query", {
+			xmlns: 'http://jabber.org/protocol/disco#items'
+		});
+		self.client.send(roster);
+
+		console.log('Channel roster request:', roster.toString());
 
 
 		// add system default commands
@@ -68,6 +73,7 @@ function LCTVChatBot(configs) {
 
 	// multi-purpose requests from the server
 	this.client.on('stanza', function(stanza) {
+
 
 		if(typeof stanza.attrs.type !== 'undefined' && stanza.attrs.type === 'error') {
 			
@@ -119,7 +125,7 @@ function LCTVChatBot(configs) {
 		self.client.send(channelJoin);
 		console.log('joined channel "' + channel + '"');
 
-		//this.roster = {};
+		self.roster = {};
 	};
 
 
@@ -135,7 +141,7 @@ function LCTVChatBot(configs) {
 		self.client.send(channelJoin);
 		console.log('left channel "' + channel + '"');
 
-		//this.roster = {};
+		self.roster = {};
 	};
 
 

@@ -11,9 +11,11 @@ var lctv_bot = new lctv_chat_bot(configs);
 
 
 
-var cheerio = require('cheerio'),
+/*var cheerio = require('cheerio'),
 	req = require('request'),
-	sleep = require('sleep');
+	sleep = require('sleep'),
+	sleepa = require('sleep-async')();
+
 
 
 var lastChannel = '';
@@ -62,9 +64,9 @@ function getLiveStreams(cb) {
 
 			var channel = {
 				username: username,
-				title: escape(title),
-				country: escape(country),
-				tag: escape(tag),
+				title: title,
+				country: country,
+				tag: tag,
 				view_count: view_count
 			};
 
@@ -80,10 +82,9 @@ function getLiveStreams(cb) {
 
 
 
+// switch sleep functionality to non-blocking version
 
 lctv_bot.on('ready', function() {
-
-	//sleep.sleep(10);
 
 	// get all live streams
 	getLiveStreams(function(channels) {
@@ -92,74 +93,61 @@ lctv_bot.on('ready', function() {
 		//return ;
 
 
-		for(var i in channels) {
-
-
-			//var chanIndex = Math.floor((Math.random() * (channels.length - 1)) + 0);
-			var chanIndex = i;
-
-			var channel = channels[chanIndex];
-
+		channels.forEach(function(channel) {
 
 			console.log('\n\n\n\nchannel selected: "' + channel.username + '"');
 
 			console.log(channel);
 
 			console.log('waiting 10 seconds to join channel...');
-			sleep.sleep(10);
-
-
-			// return ;
-
-
+			
 			// connect to channel
 			lctv_bot.joinChannel(channel.username);
 
-
-			console.log('waiting 20 seconds to get the full roster')
-			sleep.sleep(20); // wait 5 seconds, so we can be sure all clients are recognized
-
-			
-			console.log(lctv_bot.roster);
+			sleepa.sleep(1000 * 10, function() {
 
 
-			var userFound = false;
+				console.log('waiting 20 seconds to get the full roster')
+				// wait 5 seconds, so we can be sure all clients are recognized
+				//sleepa.sleep(1000 * 20, function() {
 
-			// loop through the roster looking to the user name in question
-			for(var j in lctv_bot.roster) {
-				var user = lctv_bot.roster[j];
+					var roster = lctv_bot.getRoster();
+					console.log(roster);
 
-				if(user.name === configs.settings.follow.username) {
+					var userFound = false;
 
-					// user found
-					userFound = true;
+					// loop through the roster looking to the user name in question
+					for(var j in roster) {
+						var user = roster[j];
 
-					console.log('The user has been found');
-					break;
-				}
+						if(user.name === configs.settings.follow.username) {
 
-			}
+							// user found
+							userFound = true;
 
+							console.log('The user has been found');
+							break;
+						}
 
-			if(userFound) break;
+					}
+				//});
 
-			
-			console.log('waiting 5 seconds to continue the search');
-
-			sleep.sleep(5); // wait 5 seconds
+			});
 
 
 			// disconnect from channel
 			lctv_bot.leaveChannel(channel.username);
 
 
-		}
+			sleep.sleep(20);
+
+		});
 
 
 	});
 
 });
-
+*/
 
 
 
