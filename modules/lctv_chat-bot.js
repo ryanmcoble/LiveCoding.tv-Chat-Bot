@@ -1,7 +1,8 @@
 var ltx  = require('node-xmpp-core').ltx,
 	xmpp = require('node-xmpp-client'),
 	commandLoader = require('./command-loader.js'),
-	stanzaManager = require('./stanza-manager.js');
+	stanzaManager = require('./stanza-manager.js'),
+	fs		      = require('fs');
 
 
 
@@ -53,15 +54,7 @@ function LCTVChatBot(configs) {
 		console.log('Channel roster request:', roster.toString());
 
 
-		// add system default commands
-		configs.custom_commands.push('help');
-		configs.custom_commands.push('credits');
-		configs.custom_commands.push('list');
-		configs.custom_commands.push('echo');
-		configs.custom_commands.push('roster');
-
-		//once we are online, we load up our custom commands
-		self.commands = commandLoader.load(configs.custom_commands);
+		self.loadCommands();
 
 
 		self.emit('ready');
@@ -109,6 +102,32 @@ function LCTVChatBot(configs) {
 	///  Extendible functionality  ///
 	//////////////////////////////////
 
+
+	// load commands
+	this.loadCommands = function() {
+
+		// add system default commands
+		if(configs.custom_commands.indexOf('help') === -1) {
+			configs.custom_commands.push('help');
+			configs.custom_commands.push('credits');
+			configs.custom_commands.push('list');
+			configs.custom_commands.push('echo');
+			configs.custom_commands.push('roster');
+			configs.custom_commands.push('reload');
+		}
+
+		//once we are online, we load up our custom commands
+		self.commands = commandLoader.load(configs.custom_commands);
+
+	};
+
+
+	// load configs
+	this.loadConfigs = function() {
+		 configs = JSON.parse(fs.readFileSync('./config.json'));
+	};
+
+
 	// get roster
 	this.getRoster = function() {
 		return self.roster;
@@ -143,8 +162,6 @@ function LCTVChatBot(configs) {
 
 		self.roster = {};
 	};
-
-
 
 
 	// send chat message

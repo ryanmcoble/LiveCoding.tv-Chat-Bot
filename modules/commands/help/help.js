@@ -7,7 +7,7 @@ module.exports = function() {
 			params: '$command = command (optional)',
 			execute: function(data, sandbox) {
 
-				sandbox.sendChannelMessage('\nHELP:\nHelp command functionality is unfinished.\n\n\n');
+				sandbox.sendChannelMessage('\nHELP2:\nHelp command functionality is unfinished.\n\n\n');
 			}
 		};
 	}

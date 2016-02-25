@@ -28,7 +28,7 @@ module.exports = function() {
 
 						if(featuredOnly && !channel.featured) continue;
 
-						msg += (count + 1) + ')  ' + channel.username + ' : https://livecoding.tv/' + channel.username; //+ ': ' + user.jid;
+						msg += (count + 1) + '.)  ' + channel.username + ' : https://livecoding.tv/' + channel.username; //+ ': ' + user.jid;
 						msg += '\n';
 
 						count++;
