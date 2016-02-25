@@ -13,6 +13,10 @@ module.exports = function(system, stanza, configs) {
 		if(username === configs.username) return system;
 
 
+		// rate limiting for commands
+		if()
+
+
 		// built-in say bye command
 		var sayByePattern = RegExp('^say bye \@' + configs.username + '.*');
 		if(sayByePattern.test(msg)) {
@@ -81,6 +85,9 @@ module.exports = function(system, stanza, configs) {
 		var initiatorPattern = RegExp('^' + configs.settings.general.initiator);
 		if(initiatorPattern.test(msg)) {
 
+			// rate limiting
+			//if(configs.settings.)
+
 
 			// only listen to me
 			if(configs.settings.general.only_listen_to_me && username !== configs.settings.follow.username) {
@@ -121,6 +128,9 @@ module.exports = function(system, stanza, configs) {
 			// command unsupported message
 			if(configs.settings.general.has_command_unsupported_message && !found) {
 				system.sendChannelMessage('\nUNKNOWN COMMAND:\ncommand "' + commandName + '" is not supported!\n\n\n');
+			}
+			else {
+				lastCommandTime = Math.floor(Date.now() / 1000);
 			}
 
 

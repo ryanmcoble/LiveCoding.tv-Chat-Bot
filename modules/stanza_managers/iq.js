@@ -1,9 +1,7 @@
 module.exports = function(system, stanza, configs) {
 
-
-	//var from = stanza.attrs.from;
-	//var username = from.split('/')[1];
-
+	var from = stanza.attrs.from;
+	var username = from.split('/')[1];
 
 	/*if(stanza.attrs.id === 'roster_0') {
 

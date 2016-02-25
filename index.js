@@ -10,7 +10,6 @@ var lctv_bot = new lctv_chat_bot(configs);
 
 
 
-
 /*var cheerio = require('cheerio'),
 	req = require('request'),
 	sleep = require('sleep'),

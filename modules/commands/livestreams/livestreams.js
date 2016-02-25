@@ -6,8 +6,6 @@ module.exports = function() {
 
 		var lctv_parser = require('./../../lctv_parser.js');
 
-		console.log(lctv_parser);
-
 		return {
 			name: 'livestreams',
 			params: '--featured - to show only featured streams',
@@ -30,6 +28,8 @@ module.exports = function() {
 
 						msg += (count + 1) + '.)  ' + channel.username + ' : https://livecoding.tv/' + channel.username; //+ ': ' + user.jid;
 						msg += '\n';
+
+						sandbox.sendGetVCard()
 
 						count++;
 					}
