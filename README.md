@@ -4,15 +4,25 @@
 A chat bot for https://livecoding.tv using the XMPP protocol. Just a little side project, of which I really sank my teeth into.
 
 
-### Configuration
-
+## Configuration
 All the configurations are loaded from the configs.json file.
 
+### Basic Configuration
+### Settings Configuration
+### Message Configuration
+### Follow Configuration
+### Twitter Integration Configuration
+### Custom Commands Configuration
 
-## Basic Configuration
+
+## Usage
+
+### Commands
+### Directed (@username) Message Response
+### Following Capability
 
 
-### Usage
+## Custom Commands
 
-
-### Custom Commands
+### Make a Command
+### Load New Command
