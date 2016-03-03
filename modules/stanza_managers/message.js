@@ -14,7 +14,7 @@ module.exports = function(system, stanza, configs) {
 
 
 		// rate limiting for commands
-		if()
+		//if()
 
 
 		// built-in say bye command

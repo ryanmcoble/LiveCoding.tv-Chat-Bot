@@ -29,7 +29,7 @@ module.exports = function() {
 						msg += (count + 1) + '.)  ' + channel.username + ' : https://livecoding.tv/' + channel.username; //+ ': ' + user.jid;
 						msg += '\n';
 
-						sandbox.sendGetVCard()
+						//sandbox.sendGetVCard();
 
 						count++;
 					}

@@ -32,7 +32,7 @@ module.exports = function(system, stanza, configs) {
 	}*/
 
 
-	/*var x = stanza.getChild('x');
+	var x = stanza.getChild('x');
 
 	if(!x) return system;
 
@@ -115,7 +115,7 @@ module.exports = function(system, stanza, configs) {
 
 		console.log(username + ': is now on my radar');
 
-	}*/
+	}
 
 	return system;
 
